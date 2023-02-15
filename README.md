@@ -1,2 +1,2 @@
 # Exercism
-Python exercises from exercism
+Exercises from exercism
