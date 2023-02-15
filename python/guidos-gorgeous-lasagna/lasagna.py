@@ -8,10 +8,8 @@ PREPARATION_TIME = 2
 
 def bake_time_remaining(elapsed_bake_time):
     """Calculate the bake time remaining.
-    
     :param elapsed_bake_time: int - baking time already elapsed.
     :return: int - remaining bake time (in minutes) derived from 'EXPECTED_BAKE_TIME'.
-
     Function that takes the actual minutes the lasagna has been in the oven as
     an argument and returns how many minutes the lasagna still needs to bake
     based on the `EXPECTED_BAKE_TIME`.
@@ -29,10 +27,9 @@ def preparation_time_in_minutes(layers):
 def elapsed_time_in_minutes(number_of_layers, elapsed_bake_time):
     '''
     :param number_of_layers: int - number of layers used on the pizza
-    :param elapsed_bake_tim: int - total time elapsed on the baking 
+    :param elapsed_bake_time: int - total time elapsed on the baking 
     :return: int - total eleapsed time spent
     Return elapsed cooking time.
-
     This function takes two numbers representing the number of layers & the time already spent 
     baking and calculates the total elapsed minutes spent cooking the lasagna.
     '''
