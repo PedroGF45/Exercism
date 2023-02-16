@@ -13,9 +13,7 @@ def is_criticality_balanced(temperature, neutrons_emitted):
     - The number of neutrons emitted per second is greater than 500.
     - The product of temperature and neutrons emitted per second is less than 500000.
     """
-
-    pass
-
+    return bool((temperature < 800) and (neutrons_emitted > 500) and (temperature * neutrons_emitted < 500000))
 
 def reactor_efficiency(voltage, current, theoretical_max_power):
     """Assess reactor efficiency zone.
@@ -26,7 +24,6 @@ def reactor_efficiency(voltage, current, theoretical_max_power):
     :return: str - one of ('green', 'orange', 'red', or 'black').
 
     Efficiency can be grouped into 4 bands:
-
     1. green -> efficiency of 80% or more,
     2. orange -> efficiency of less than 80% but at least 60%,
     3. red -> efficiency below 60%, but still 30% or more,
@@ -36,9 +33,16 @@ def reactor_efficiency(voltage, current, theoretical_max_power):
     (generated power/ theoretical max power)*100
     where generated power = voltage * current
     """
-
-    pass
-
+    generated_power = voltage * current
+    efficiency = (generated_power / theoretical_max_power) * 100
+    if (efficiency >= 80):
+        return 'green'
+    elif (efficiency >= 60): 
+        return 'orange'
+    elif (efficiency >= 30):
+        return 'red'
+    else:
+        return 'black'
 
 def fail_safe(temperature, neutrons_produced_per_second, threshold):
     """Assess and return status code for the reactor.
@@ -52,5 +56,9 @@ def fail_safe(temperature, neutrons_produced_per_second, threshold):
     2. 'NORMAL' -> `temperature * neutrons per second` +/- 10% of `threshold`
     3. 'DANGER' -> `temperature * neutrons per second` is not in the above-stated ranges
     """
-
-    pass
+    if ((temperature * neutrons_produced_per_second) < (0.9 * threshold)):
+        return 'LOW'
+    if (((temperature * neutrons_produced_per_second) <= (1.1 * threshold)) and ((temperature * neutrons_produced_per_second) >= (0.9 * threshold))):
+        return 'NORMAL'
+    else:
+        return 'DANGER'
