@@ -1,3 +1,5 @@
+''' Program to calculate the money exchanged'''
+
 def exchange_money(budget, exchange_rate):
     """ Function to make the conversion from currency A to B based on the budget and exchange_rate
     :param budget: float - amount of money you are planning to exchange.
@@ -30,7 +32,6 @@ def get_number_of_bills(budget, denomination):
     """
     return int(budget // denomination)
 
-
 def get_leftover_of_bills(budget, denomination):
     """ Function to calculate the leftover after the calculations of the number of bills
     :param budget: float - the amount of money you are planning to exchange.
@@ -40,8 +41,7 @@ def get_leftover_of_bills(budget, denomination):
     return budget % denomination
  
 def exchangeable_value(budget, exchange_rate, spread, denomination):
-    """
-
+    """ Function to calculate the maximum value to get 
     :param budget: float - the amount of your money you are planning to exchange.
     :param exchange_rate: float - the unit value of the foreign currency.
     :param spread: int - percentage that is taken as an exchange fee.
