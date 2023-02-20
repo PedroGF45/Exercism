@@ -48,7 +48,7 @@ def approx_average_is_average(hand):
     average = card_average(hand)
     first_last = card_average([hand[0]] + [hand[-1]])
     median = hand[int((len(hand) - 1) / 2)]
-    return bool((average == median) or (average == first_last))
+    return bool(average in (median, first_last))
 
 def average_even_is_average_odd(hand):
     """Return if the (average of even indexed card values) == (average of odd indexed card values).
@@ -69,3 +69,4 @@ def maybe_double_last(hand):
     if hand[-1] == 11:
         return hand[:-1] + [22]
     return hand
+    
