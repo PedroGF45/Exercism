@@ -10,9 +10,7 @@ def get_rounds(number):
     :param number: int - current round number.
     :return: list - current round and the two that follow.
     """
-
-    pass
-
+    return [number, number + 1, number + 2]
 
 def concatenate_rounds(rounds_1, rounds_2):
     """Concatenate two lists of round numbers.
@@ -21,9 +19,7 @@ def concatenate_rounds(rounds_1, rounds_2):
     :param rounds_2: list - second set of rounds played.
     :return: list - all rounds played.
     """
-
-    pass
-
+    return rounds_1 + rounds_2
 
 def list_contains_round(rounds, number):
     """Check if the list of rounds contains the specified number.
@@ -32,9 +28,7 @@ def list_contains_round(rounds, number):
     :param number: int - round number.
     :return: bool - was the round played?
     """
-
-    pass
-
+    return bool(number in rounds)
 
 def card_average(hand):
     """Calculate and returns the average card value from the list.
@@ -42,8 +36,7 @@ def card_average(hand):
     :param hand: list - cards in hand.
     :return: float - average value of the cards in the hand.
     """
-
-    pass
+    return sum(map(lambda x: x, hand)) / len(hand)
 
 
 def approx_average_is_average(hand):
@@ -52,9 +45,10 @@ def approx_average_is_average(hand):
     :param hand: list - cards in hand.
     :return: bool - does one of the approximate averages equal the `true average`?
     """
-
-    pass
-
+    average = card_average(hand)
+    first_last = card_average([hand[0]] + [hand[-1]])
+    median = hand[int((len(hand) - 1) / 2)]
+    return bool((average == median) or (average == first_last))
 
 def average_even_is_average_odd(hand):
     """Return if the (average of even indexed card values) == (average of odd indexed card values).
@@ -62,9 +56,9 @@ def average_even_is_average_odd(hand):
     :param hand: list - cards in hand.
     :return: bool - are even and odd averages equal?
     """
-
-    pass
-
+    odd_hand = list(map(lambda x: hand[x], filter(lambda x: x % 2 !=0, range(len(hand)))))
+    even_hand = list(map(lambda x: hand[x], filter(lambda x: x % 2 == 0, range(len(hand)))))
+    return bool(card_average(odd_hand) == card_average(even_hand))
 
 def maybe_double_last(hand):
     """Multiply a Jack card value in the last index position by 2.
@@ -72,5 +66,6 @@ def maybe_double_last(hand):
     :param hand: list - cards in hand.
     :return: list - hand with Jacks (if present) value doubled.
     """
-
-    pass
+    if hand[-1] == 11:
+        return hand[:-1] + [22]
+    return hand
