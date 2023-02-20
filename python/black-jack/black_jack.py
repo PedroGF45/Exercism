@@ -16,7 +16,7 @@ def value_of_card(card):
     """
     if card == 'A':
         return 1
-    elif card == 'J' or card == 'Q' or card == 'K':
+    elif card in ['J', 'Q', 'K']:
         return 10
     else:
         return int(card)
