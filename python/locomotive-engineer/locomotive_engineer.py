@@ -1,17 +1,13 @@
 """Functions which helps the locomotive engineer to keep track of the train."""
 
-
-# TODO: define the 'get_list_of_wagons' function
-def get_list_of_wagons():
+def get_list_of_wagons(*args):
     """Return a list of wagons.
 
     :param: arbitrary number of wagons.
     :return: list - list of wagons.
     """
-    pass
+    return [*args]
 
-
-# TODO: define the 'fixListOfWagons()' function
 def fix_list_of_wagons(each_wagons_id, missing_wagons):
     """Fix the list of wagons.
 
@@ -19,21 +15,23 @@ def fix_list_of_wagons(each_wagons_id, missing_wagons):
     :parm missing_wagons: list - the list of missing wagons.
     :return: list - list of wagons.
     """
-    pass
+    first = [1]
+    third, fourth = each_wagons_id[3:], each_wagons_id[:2]
+    return first + missing_wagons + third + fourth
 
-
-# TODO: define the 'add_missing_stops()' function
-def add_missing_stops():
+def add_missing_stops(route, **kwargs):
     """Add missing stops to route dict.
 
     :param route: dict - the dict of routing information.
     :param: arbitrary number of stops.
     :return: dict - updated route dictionary.
     """
-    pass
+    route_update = route
+    route_update['stops'] = []
+    for item, key in kwargs.items():
+        route_update['stops'] += [key]
+    return route_update
 
-
-# TODO: define the 'extend_route_information()' function
 def extend_route_information(route, more_route_information):
     """Extend route information with more_route_information.
 
@@ -41,8 +39,11 @@ def extend_route_information(route, more_route_information):
     :param more_route_information: dict -  extra route information.
     :return: dict - extended route information.
     """
-    pass
-
+    updated_route = route
+    for item in more_route_information:
+        if item not in route:
+            updated_route[item] = more_route_information[item]
+    return updated_route
 
 # TODO: define the 'fix_wagon_depot()' function
 def fix_wagon_depot(wagons_rows):
@@ -51,4 +52,5 @@ def fix_wagon_depot(wagons_rows):
     :param wagons_rows: list[list[tuple]] - the list of rows of wagons.
     :return: list[list[tuple]] - list of rows of wagons.
     """
-    pass
+    updated_depot = list(map(lambda *x: list(x), *wagons_rows))
+    return updated_depot
