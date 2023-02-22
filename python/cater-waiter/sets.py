@@ -1,6 +1,5 @@
 """Functions for compiling dishes and ingredients for a catering company."""
 
-
 from sets_categories_data import (VEGAN,
                                   VEGETARIAN,
                                   KETO,
@@ -8,7 +7,6 @@ from sets_categories_data import (VEGAN,
                                   OMNIVORE,
                                   ALCOHOLS,
                                   SPECIAL_INGREDIENTS)
-
 
 def clean_ingredients(dish_name, dish_ingredients):
     """Remove duplicates from `dish_ingredients`.
@@ -20,9 +18,7 @@ def clean_ingredients(dish_name, dish_ingredients):
     This function should return a `tuple` with the name of the dish as the first item,
     followed by the de-duped `set` of ingredients as the second item.
     """
-
-    pass
-
+    return (dish_name, set(dish_ingredients))
 
 def check_drinks(drink_name, drink_ingredients):
     """Append "Cocktail" (alcohol)  or "Mocktail" (no alcohol) to `drink_name`, based on `drink_ingredients`.
@@ -35,9 +31,10 @@ def check_drinks(drink_name, drink_ingredients):
     name followed by "Cocktail" (includes alcohol).
 
     """
-
-    pass
-
+    for item in drink_ingredients:
+        if item in ALCOHOLS:
+            return (f'{drink_name} Cocktail')
+    return (f'{drink_name} Mocktail')
 
 def categorize_dish(dish_name, dish_ingredients):
     """Categorize `dish_name` based on `dish_ingredients`.
@@ -51,9 +48,16 @@ def categorize_dish(dish_name, dish_ingredients):
     All dishes will "fit" into one of the categories imported from `sets_categories_data.py`
 
     """
-
-    pass
-
+    if all(map(lambda x: x in VEGAN, dish_ingredients)):
+        return (f'{dish_name}: VEGAN')
+    elif all(map(lambda x: x in VEGETARIAN, dish_ingredients)):
+        return (f'{dish_name}: VEGETARIAN')
+    elif all(map(lambda x: x in PALEO, dish_ingredients)):
+        return (f'{dish_name}: PALEO')
+    elif all(map(lambda x: x in KETO, dish_ingredients)):
+        return (f'{dish_name}: KETO')
+    else:
+        return (f'{dish_name}: OMNIVORE') 
 
 def tag_special_ingredients(dish):
     """Compare `dish` ingredients to `SPECIAL_INGREDIENTS`.
@@ -65,9 +69,9 @@ def tag_special_ingredients(dish):
     For the purposes of this exercise, all allergens or special ingredients that need to be tracked are in the
     SPECIAL_INGREDIENTS constant imported from `sets_categories_data.py`.
     """
-
-    pass
-
+    dish_name, ingredients_list = dish
+    s_ingredients = set(filter(lambda x: x in SPECIAL_INGREDIENTS, ingredients_list))
+    return (dish_name, s_ingredients)
 
 def compile_ingredients(dishes):
     """Create a master list of ingredients.
@@ -77,9 +81,10 @@ def compile_ingredients(dishes):
 
     This function should return a `set` of all ingredients from all listed dishes.
     """
-
-    pass
-
+    ingredients = set()
+    for item in dishes:
+        ingredients.update(item)
+    return ingredients
 
 def separate_appetizers(dishes, appetizers):
     """Determine which `dishes` are designated `appetizers` and remove them.
@@ -91,9 +96,9 @@ def separate_appetizers(dishes, appetizers):
     The function should return the list of dish names with appetizer names removed.
     Either list could contain duplicates and may require de-duping.
     """
+    dishes_cleaned, appetizers_cleaned = set(dishes), set(appetizers)
 
-    pass
-
+    return dishes_cleaned.difference(appetizers_cleaned)
 
 def singleton_ingredients(dishes, intersection):
     """Determine which `dishes` have a singleton ingredient (an ingredient that only appears once across dishes).
@@ -109,5 +114,7 @@ def singleton_ingredients(dishes, intersection):
 
     The function should return a `set` of ingredients that only appear in a single dish.
     """
-
-    pass
+    single_ingredients = set()
+    for item in dishes:
+        single_ingredients = single_ingredients.union(item.difference(intersection))
+    return single_ingredients
