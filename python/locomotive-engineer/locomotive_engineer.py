@@ -45,7 +45,6 @@ def extend_route_information(route, more_route_information):
             updated_route[item] = more_route_information[item]
     return updated_route
 
-# TODO: define the 'fix_wagon_depot()' function
 def fix_wagon_depot(wagons_rows):
     """Fix the list of rows of wagons.
 
