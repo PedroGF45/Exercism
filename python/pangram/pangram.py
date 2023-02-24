@@ -1,2 +1,6 @@
+import string
+
+alphabet = list(string.ascii_lowercase)
+
 def is_pangram(sentence):
-    pass
+    return bool(all(map(lambda x: x in sentence.lower(), alphabet)))
