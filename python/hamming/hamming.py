@@ -6,5 +6,10 @@ def distance(strand_a, strand_b):
     for i in range(len(strand_a)):
         if strand_a[i] != strand_b[i]:
             hamming_distance += 1
-            
+
+    # option using enumerate
+    #for index, item in enumerate(strand_a):
+    #    if item != strand_b[index]:
+    #        hamming_distance += 1
+
     return hamming_distance
