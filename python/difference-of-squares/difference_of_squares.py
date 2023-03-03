@@ -1,19 +1,19 @@
 def square_of_sum(number):
     i = 1
-    sum = 0
+    squares_sum = 0
     while i <= number:
-        sum += i
+        squares_sum += i
         i += 1
-    return sum**2
+    return squares_sum**2
 
 
 def sum_of_squares(number):
     i = 1
-    sum = 0
+    sum_squares = 0
     while i <= number:
-        sum += i**2
+        sum_squares += i**2
         i += 1
-    return sum
+    return sum_squares
 
 
 def difference_of_squares(number):
