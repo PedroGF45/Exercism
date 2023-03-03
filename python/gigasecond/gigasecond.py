@@ -1,6 +1,6 @@
 from datetime import timedelta
+TIME = timedelta(seconds= 1000000000)
 
 def add(moment):
-    time = timedelta(seconds= 1000000000)
-    return moment + time
+    return moment + TIME
 
