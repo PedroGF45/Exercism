@@ -1,19 +1,15 @@
 def find(list, value):
 
-    copy_search = list.copy()
-    index = len(copy_search) // 2
-
-    # sorting algorithm
-    def aux(copy_search, value):
-        if value == copy_search[index]:
-            return list.index(value)
-        elif value > copy_search[index]:
-            return aux(copy_search[index + 1:], value)
-        else: 
-            return aux(copy_search[:index], value)
-    
     # value is not in list
-    if value not in copy_search:
+    if value not in list:
         raise ValueError('value not in array')
-    else:
-        return aux(copy_search, value)
+
+    index = len(list) // 2
+
+    if value == list[index]:
+        return index
+    elif value > list[index]:
+        return find(list[index + 1:], value) + index + 1
+    else: 
+         return find(list[:index], value)
+    
