@@ -16,5 +16,3 @@ def prime(number):
             i += 1
     
     return prime_numbers[number - 1]
-
-
