@@ -1,3 +1,4 @@
 class PhoneNumber:
     def __init__(self, number):
-        pass
+        self.number = str(filter(lambda x: x.isdigit(), number))
+        
