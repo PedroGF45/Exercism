@@ -10,7 +10,7 @@ class PhoneNumber:
         # check if there's a country code
         if len(self.number) == 11 and self.number[0] == '1':
             self.number = self.number[1:]
-            self.area_code = self.number[1:4]
+            self.area_code = self.number[:3]
         elif len(self.number) == 11 and self.number[0] != '1':
             raise ValueError("11 digits must start with 1")
         
@@ -33,4 +33,4 @@ class PhoneNumber:
             raise ValueError("exchange code cannot start with one")
         
     def pretty(self):
-        return f'({self.number[:3]})-{self.number[3:6]}-{self.number[6:]}'
+        return f'({self.area_code})-{self.number[3:6]}-{self.number[6:]}'
