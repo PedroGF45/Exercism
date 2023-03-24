@@ -66,7 +66,6 @@ def say(number):
     
     ans = ''
     for i in range(1, len(break_number) + 1, 1):
-        print(break_number)
         ans += f'{check_hundred(int(break_number[i - 1]))}{check_grandeza(i)}'
 
     return ans.strip()
