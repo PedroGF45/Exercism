@@ -27,8 +27,6 @@ class Queen:
             raise ValueError("Invalid queen position: both queens in the same square")
         
         # same row or same column or same diagonal
-        if self.position[0] == another_queen.position[0] \
+        return self.position[0] == another_queen.position[0] \
             or self.position[1] == another_queen.position[1] \
-            or abs(self.position[0] - another_queen.position[0]) == abs(self.position[1] - another_queen.position[1]):
-            return True
-        return False
+            or abs(self.position[0] - another_queen.position[0]) == abs(self.position[1] - another_queen.position[1])
